@@ -10,17 +10,17 @@
 # 15 "newmain.c"
 #pragma config FOSC = HS
 #pragma config WDTE = OFF
-#pragma config PWRTE = OFF
+#pragma config PWRTE = ON
 #pragma config MCLRE = ON
 #pragma config CP = OFF
 #pragma config CPD = OFF
-#pragma config BOREN = OFF
+#pragma config BOREN = ON
 #pragma config IESO = ON
 #pragma config FCMEN = ON
 #pragma config LVP = OFF
 
 
-#pragma config BOR4V = BOR40V
+#pragma config BOR4V = BOR21V
 #pragma config WRT = OFF
 
 
@@ -2661,6 +2661,7 @@ void USART_Init() {
 
 
 
+
     SPBRGH = 0;
     SPBRG = 129;
 
@@ -2671,26 +2672,11 @@ void USART_Init() {
     PIE1bits.RCIE = 1;
     INTCONbits.PEIE = 1;
     INTCONbits.GIE = 1;
-
 }
 
 void UART_WRITE(uint8_t send) {
     TXREG = send;
     while(!TXSTAbits.TRMT);
-}
-# 91 "./bluetooth.h"
-void UART_GET(uint8_t *c, _Bool *flag) {
-
-
-
-
-
-    *c = RCREG;
-    *flag = 1;
-
-        RCSTAbits.CREN = 0;
-        RCSTAbits.CREN = 1;
-# 120 "./bluetooth.h"
 }
 # 35 "newmain.c" 2
 
@@ -2713,22 +2699,21 @@ void LED_set_off() {
 
 uint8_t data = 'T';
 uint8_t ferr;
+
+
+
+
+
 void __attribute__((picinterrupt(("")))) isr() {
-
-
-
-
+# 59 "newmain.c"
     ferr = FERR;
     if(OERR) {
-        CREN = 0;
-        CREN = 1;
+        RCSTAbits.CREN = 0;
+        RCSTAbits.CREN = 1;
     }
     data = RCREG;
     UART_WRITE(data);
-
-
-
-
+# 74 "newmain.c"
     if (data == 'A') {
         RD0 = !RD0;
     }
@@ -2745,6 +2730,6 @@ void main() {
     RD3=1;
 
     while(1) {
-# 90 "newmain.c"
+# 107 "newmain.c"
     }
 }

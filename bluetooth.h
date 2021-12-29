@@ -57,22 +57,22 @@ void USART_Init() {
     
     TXSTAbits.BRGH = 1;       // High baud rate
     BAUDCTLbits.BRG16 = 0;
+    
     /*
-        HC-05 bluetooth module default baud rate is 9600
-        Check PIC16f887 datasheet for correct SPBRG decimal value
-        under 12.0 EUSART
+        -----   HC-05 bluetooth module default baud rate is 9600           -----
+        -----   Check PIC16f887 datasheet for correct SPBRG decimal value  -----
+        -----   under 12.0 EUSART                                          -----
      */
     SPBRGH = 0;
     SPBRG = 129;      // 20MHz FOSC with baud rate bit = HIGH  
-    /*
-     -----  Turning on RCIE,PEIE,GIE from PIE1, INTCON bits -----
-     -----  Enables RCIF interrupt flag                     -----
-    */  
     
+    /*
+        -----  Turning on RCIE,PEIE,GIE from PIE1, INTCON bits             -----
+        -----  Enables RCIF interrupt flag                                 -----
+    */
     PIE1bits.RCIE = 1;      // Receiver Interrupt
     INTCONbits.PEIE = 1;    // Peripheral Interrupt 
     INTCONbits.GIE = 1;     // Global Interrupt
-    
 }
 
 void UART_WRITE(uint8_t send) {
@@ -88,19 +88,21 @@ void UART_Write_Text(char *text) {
         UART_Write(text[i]);
 }
 */
+
+/*
 void UART_GET(uint8_t *c, bool *flag) {
-        /*
+     
      -----  Framing Error bit & Overrun Error bit checking  -----
      -----  If FERR true then read RCREG                    -----
      -----  Read RCREG to *data when all check clear        -----
-    */
+    
     *c = RCREG;
     *flag = true;
     
         RCSTAbits.CREN = 0;
         RCSTAbits.CREN = 1;
     
-/*
+
     if(RCSTAbits.FERR) {
         uint8_t err = RCREG;
         RD0 = 1;
@@ -116,5 +118,5 @@ void UART_GET(uint8_t *c, bool *flag) {
         *c = RCREG;
         *flag = true;   
     }
- */
 }
+*/

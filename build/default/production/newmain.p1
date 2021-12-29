@@ -87,9 +87,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1133
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1133: extern volatile unsigned char TXREG __attribute__((address(0x019)));
 [v _TXREG `Vuc ~T0 @X0 0 e@25 ]
-"1140
-[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1140: extern volatile unsigned char RCREG __attribute__((address(0x01A)));
-[v _RCREG `Vuc ~T0 @X0 0 e@26 ]
 "1608
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1608:     struct {
 [s S59 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -121,9 +118,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4001
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4001: extern volatile __bit OERR __attribute__((address(0xC1)));
 [v _OERR `Vb ~T0 @X0 0 e@193 ]
-"3836
-[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3836: extern volatile __bit CREN __attribute__((address(0xC4)));
-[v _CREN `Vb ~T0 @X0 0 e@196 ]
+"1140
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1140: extern volatile unsigned char RCREG __attribute__((address(0x01A)));
+[v _RCREG `Vuc ~T0 @X0 0 e@26 ]
 [p mainexit ]
 "1868
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1868:     struct {
@@ -149,7 +146,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "16
 [p x WDTE  =  OFF        ]
 "17
-[p x PWRTE  =  OFF        ]
+[p x PWRTE  =  ON        ]
 "18
 [p x MCLRE  =  ON        ]
 "19
@@ -157,7 +154,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "20
 [p x CPD  =  OFF         ]
 "21
-[p x BOREN  =  OFF        ]
+[p x BOREN  =  ON        ]
 "22
 [p x IESO  =  ON         ]
 "23
@@ -165,7 +162,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "24
 [p x LVP  =  OFF         ]
 "27
-[p x BOR4V  =  BOR40V    ]
+[p x BOR4V  =  BOR21V    ]
 "28
 [p x WRT  =  OFF         ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
@@ -426,20 +423,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 "59
 [; ;./bluetooth.h: 59:     BAUDCTLbits.BRG16 = 0;
 [e = . . _BAUDCTLbits 0 3 -> -> 0 `i `uc ]
-"65
-[; ;./bluetooth.h: 65:     SPBRGH = 0;
-[e = _SPBRGH -> -> 0 `i `uc ]
 "66
-[; ;./bluetooth.h: 66:     SPBRG = 129;
+[; ;./bluetooth.h: 66:     SPBRGH = 0;
+[e = _SPBRGH -> -> 0 `i `uc ]
+"67
+[; ;./bluetooth.h: 67:     SPBRG = 129;
 [e = _SPBRG -> -> 129 `i `uc ]
-"72
-[; ;./bluetooth.h: 72:     PIE1bits.RCIE = 1;
-[e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
 "73
-[; ;./bluetooth.h: 73:     INTCONbits.PEIE = 1;
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+[; ;./bluetooth.h: 73:     PIE1bits.RCIE = 1;
+[e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
 "74
-[; ;./bluetooth.h: 74:     INTCONbits.GIE = 1;
+[; ;./bluetooth.h: 74:     INTCONbits.PEIE = 1;
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"75
+[; ;./bluetooth.h: 75:     INTCONbits.GIE = 1;
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
 "76
 [; ;./bluetooth.h: 76: }
@@ -466,30 +463,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./bluetooth.h: 81: }
 [e :UE 139 ]
 }
-"91
-[; ;./bluetooth.h: 91: void UART_GET(uint8_t *c, _Bool *flag) {
-[v _UART_GET `(v ~T0 @X0 1 ef2`*uc`*a ]
-{
-[e :U _UART_GET ]
-[v _c `*uc ~T0 @X0 1 r1 ]
-[v _flag `*a ~T0 @X0 1 r2 ]
-[f ]
-"97
-[; ;./bluetooth.h: 97:     *c = RCREG;
-[e = *U _c _RCREG ]
-"98
-[; ;./bluetooth.h: 98:     *flag = 1;
-[e = *U _flag -> -> 1 `i `a ]
-"100
-[; ;./bluetooth.h: 100:         RCSTAbits.CREN = 0;
-[e = . . _RCSTAbits 0 4 -> -> 0 `i `uc ]
-"101
-[; ;./bluetooth.h: 101:         RCSTAbits.CREN = 1;
-[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
-"120
-[; ;./bluetooth.h: 120: }
-[e :UE 143 ]
-}
 "80 ./pins.h
 [; ;./pins.h: 80: void registers() {
 [v _registers `(v ~T0 @X0 1 ef ]
@@ -510,7 +483,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _TRISDbits 0 0 -> -> 0 `i `uc ]
 "86
 [; ;./pins.h: 86: }
-[e :UE 144 ]
+[e :UE 143 ]
 }
 "88
 [; ;./pins.h: 88: void LED_set_off() {
@@ -523,7 +496,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _RD3 -> = _RD2 -> = _RD1 -> = _RD0 -> -> 0 `i `b `b `b `b ]
 "90
 [; ;./pins.h: 90: }
-[e :UE 145 ]
+[e :UE 144 ]
 }
 "39 newmain.c
 [; ;newmain.c: 39: uint8_t data = 'T';
@@ -535,89 +508,89 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;newmain.c: 40: uint8_t ferr;
 [v _ferr `uc ~T0 @X0 1 e ]
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"41
-[; ;newmain.c: 41: void __attribute__((picinterrupt(("")))) isr() {
+"46
+[; ;newmain.c: 46: void __attribute__((picinterrupt(("")))) isr() {
 [v _isr `(v ~T1 @X0 1 ef ]
 {
 [e :U _isr ]
 [f ]
-"46
-[; ;newmain.c: 46:     ferr = FERR;
+"59
+[; ;newmain.c: 59:     ferr = FERR;
 [e = _ferr -> _FERR `uc ]
-"47
-[; ;newmain.c: 47:     if(OERR) {
-[e $ ! _OERR 147  ]
+"60
+[; ;newmain.c: 60:     if(OERR) {
+[e $ ! _OERR 146  ]
 {
-"48
-[; ;newmain.c: 48:         CREN = 0;
-[e = _CREN -> -> 0 `i `b ]
-"49
-[; ;newmain.c: 49:         CREN = 1;
-[e = _CREN -> -> 1 `i `b ]
-"50
-[; ;newmain.c: 50:     }
+"61
+[; ;newmain.c: 61:         RCSTAbits.CREN = 0;
+[e = . . _RCSTAbits 0 4 -> -> 0 `i `uc ]
+"62
+[; ;newmain.c: 62:         RCSTAbits.CREN = 1;
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+"63
+[; ;newmain.c: 63:     }
+}
+[e :U 146 ]
+"64
+[; ;newmain.c: 64:     data = RCREG;
+[e = _data _RCREG ]
+"65
+[; ;newmain.c: 65:     UART_WRITE(data);
+[e ( _UART_WRITE (1 _data ]
+"74
+[; ;newmain.c: 74:     if (data == 'A') {
+[e $ ! == -> _data `ui -> 65 `ui 147  ]
+{
+"75
+[; ;newmain.c: 75:         RD0 = !RD0;
+[e = _RD0 ! _RD0 ]
+"76
+[; ;newmain.c: 76:     }
 }
 [e :U 147 ]
-"51
-[; ;newmain.c: 51:     data = RCREG;
-[e = _data _RCREG ]
-"52
-[; ;newmain.c: 52:     UART_WRITE(data);
-[e ( _UART_WRITE (1 _data ]
-"57
-[; ;newmain.c: 57:     if (data == 'A') {
-[e $ ! == -> _data `ui -> 65 `ui 148  ]
-{
-"58
-[; ;newmain.c: 58:         RD0 = !RD0;
-[e = _RD0 ! _RD0 ]
-"59
-[; ;newmain.c: 59:     }
-}
-[e :U 148 ]
-"61
-[; ;newmain.c: 61: }
-[e :UE 146 ]
+"78
+[; ;newmain.c: 78: }
+[e :UE 145 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"62
-[; ;newmain.c: 62: void main() {
+"79
+[; ;newmain.c: 79: void main() {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"63
-[; ;newmain.c: 63:     OSCCONbits.SCS = 0;
+"80
+[; ;newmain.c: 80:     OSCCONbits.SCS = 0;
 [e = . . _OSCCONbits 0 0 -> -> 0 `i `uc ]
-"64
-[; ;newmain.c: 64:     OSCCONbits.OSTS = 1;
+"81
+[; ;newmain.c: 81:     OSCCONbits.OSTS = 1;
 [e = . . _OSCCONbits 0 3 -> -> 1 `i `uc ]
-"66
-[; ;newmain.c: 66:     registers();
+"83
+[; ;newmain.c: 83:     registers();
 [e ( _registers ..  ]
-"67
-[; ;newmain.c: 67:     LED_set_off();
+"84
+[; ;newmain.c: 84:     LED_set_off();
 [e ( _LED_set_off ..  ]
-"68
-[; ;newmain.c: 68:     USART_Init();
+"85
+[; ;newmain.c: 85:     USART_Init();
 [e ( _USART_Init ..  ]
-"69
-[; ;newmain.c: 69:     _delay((unsigned long)((1000)*(20000000/4000.0)));
+"86
+[; ;newmain.c: 86:     _delay((unsigned long)((1000)*(20000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"70
-[; ;newmain.c: 70:     RD3=1;
+"87
+[; ;newmain.c: 87:     RD3=1;
 [e = _RD3 -> -> 1 `i `b ]
-"72
-[; ;newmain.c: 72:     while(1) {
-[e :U 151 ]
-{
-"90
-[; ;newmain.c: 90:     }
-}
+"89
+[; ;newmain.c: 89:     while(1) {
 [e :U 150 ]
-[e $U 151  ]
-[e :U 152 ]
-"91
-[; ;newmain.c: 91: }
-[e :UE 149 ]
+{
+"107
+[; ;newmain.c: 107:     }
+}
+[e :U 149 ]
+[e $U 150  ]
+[e :U 151 ]
+"108
+[; ;newmain.c: 108: }
+[e :UE 148 ]
 }
