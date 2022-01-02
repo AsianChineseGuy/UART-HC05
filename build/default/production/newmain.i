@@ -2678,7 +2678,7 @@ void UART_WRITE(uint8_t *send) {
     TXREG = *send;
     while(!TXSTAbits.TRMT);
 }
-
+# 92 "./bluetooth.h"
 void UART_GET(uint8_t *value) {
     *value = RCREG;
 }
@@ -2703,7 +2703,7 @@ void LED_set_off() {
 
 uint8_t data = 'T';
 uint8_t ferr;
-uint8_t value = 0;
+uint16_t mili_second = 0;
 
 void __attribute__((picinterrupt(("")))) isr() {
 
@@ -2723,6 +2723,21 @@ void __attribute__((picinterrupt(("")))) isr() {
 
     if (data == 'A') {
         RD0 = !RD0;
+
+    }
+
+    if(T0IF) {
+        if(mili_second == 1000) {
+            RD2 = !RD2;
+            mili_second = 0;
+        }
+
+        RD1 = !RD1;
+        TMR0 = 100;
+        INTCONbits.T0IF = 0;
+        mili_second++;
+
+
     }
 
 }
@@ -2740,9 +2755,20 @@ void main() {
 
     _delay((unsigned long)((2000)*(20000000/4000.0)));
 
+
+
+
+    TMR0 = 100;
+
+    OPTION_REGbits.T0CS = 0;
+    OPTION_REGbits.PSA = 0;
+    OPTION_REGbits.PS = 0b100;
+    INTCONbits.T0IE = 1;
+    INTCONbits.T0IF = 0;
+
     RD3=1;
 
     while(1) {
-# 98 "newmain.c"
+# 124 "newmain.c"
     }
 }

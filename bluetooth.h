@@ -80,6 +80,15 @@ void UART_WRITE(uint8_t *send) {
     while(!TXSTAbits.TRMT);  // WAIT FOR TXREG to become empty
 }
 
+
+/*
+void UART_Write_Text(char *text) {
+    int i;
+    for(i=0;text[i]!='\0';i++)
+        UART_Write(text[i]);
+}
+*/
+
 void UART_GET(uint8_t *value) {
     *value = RCREG;
 }

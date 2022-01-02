@@ -38,7 +38,7 @@
 
 uint8_t data = 'T';
 uint8_t ferr;
-uint8_t value = 0;
+uint16_t mili_second = 0;
 
 void __interrupt() isr() {   
     /*
@@ -58,11 +58,26 @@ void __interrupt() isr() {
     
     if (data == 'A') {
         RD0 = !RD0;
+        
+    }  
+    
+    if(T0IF) {
+        if(mili_second == 1000) {
+            RD2 = !RD2;
+            mili_second = 0;
+        }
+        
+        RD1 = !RD1;
+        TMR0 = 100;
+        INTCONbits.T0IF     = 0;
+        mili_second++;
+        
+        
     }
     
 }
 void main() {
-    OSCCONbits.SCS = 0;         //  System clock set by FOSC<2,0> CONFIG1
+    OSCCONbits.SCS  = 0;         //  System clock set by FOSC<2,0> CONFIG1
     OSCCONbits.OSTS = 1;        //  Oscillator start up time set by FOSC<2,0> CONFIG1
     
     registers();                // Initiate pinouts
@@ -75,6 +90,17 @@ void main() {
      */
     __delay_ms(2000);           
     
+    //  Timer Delay Initialize
+
+
+    TMR0 = 100;
+
+    OPTION_REGbits.T0CS = 0;
+    OPTION_REGbits.PSA  = 0;     // Prescaler set to timer0 module
+    OPTION_REGbits.PS   = 0b100;   // 1:32
+    INTCONbits.T0IE     = 1;
+    INTCONbits.T0IF     = 0;
+ 
     RD3=1;      // Ready for operation
     //unsigned char data = 'A';
     while(1) {
