@@ -75,48 +75,11 @@ void USART_Init() {
     INTCONbits.GIE = 1;     // Global Interrupt
 }
 
-void UART_WRITE(uint8_t send) {
-    TXREG = send;
+void UART_WRITE(uint8_t *send) {
+    TXREG = *send;
     while(!TXSTAbits.TRMT);  // WAIT FOR TXREG to become empty
 }
 
-
-/*
-void UART_Write_Text(char *text) {
-    int i;
-    for(i=0;text[i]!='\0';i++)
-        UART_Write(text[i]);
+void UART_GET(uint8_t *value) {
+    *value = RCREG;
 }
-*/
-
-/*
-void UART_GET(uint8_t *c, bool *flag) {
-     
-     -----  Framing Error bit & Overrun Error bit checking  -----
-     -----  If FERR true then read RCREG                    -----
-     -----  Read RCREG to *data when all check clear        -----
-    
-    *c = RCREG;
-    *flag = true;
-    
-        RCSTAbits.CREN = 0;
-        RCSTAbits.CREN = 1;
-    
-
-    if(RCSTAbits.FERR) {
-        uint8_t err = RCREG;
-        RD0 = 1;
-        __delay_ms(500);
-        RD0 = 0;
-    } else if(RCSTAbits.OERR) {
-        RCSTAbits.CREN = 0;
-        RCSTAbits.CREN = 1;
-        RD1 = 1;
-        __delay_ms(500);
-        RD1 = 0;
-    } else {
-        *c = RCREG;
-        *flag = true;   
-    }
-}
-*/

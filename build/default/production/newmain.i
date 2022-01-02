@@ -2674,9 +2674,13 @@ void USART_Init() {
     INTCONbits.GIE = 1;
 }
 
-void UART_WRITE(uint8_t send) {
-    TXREG = send;
+void UART_WRITE(uint8_t *send) {
+    TXREG = *send;
     while(!TXSTAbits.TRMT);
+}
+
+void UART_GET(uint8_t *value) {
+    *value = RCREG;
 }
 # 35 "newmain.c" 2
 
@@ -2699,21 +2703,24 @@ void LED_set_off() {
 
 uint8_t data = 'T';
 uint8_t ferr;
-
-
-
-
+uint8_t value = 0;
 
 void __attribute__((picinterrupt(("")))) isr() {
-# 59 "newmain.c"
-    ferr = FERR;
-    if(OERR) {
-        RCSTAbits.CREN = 0;
-        RCSTAbits.CREN = 1;
+
+
+
+
+    if(RCIF) {
+        ferr = FERR;
+        if(OERR) {
+            RCSTAbits.CREN = 0;
+            RCSTAbits.CREN = 1;
+        }
+
+        UART_GET(&data);
+        UART_WRITE(&data);
     }
-    data = RCREG;
-    UART_WRITE(data);
-# 74 "newmain.c"
+
     if (data == 'A') {
         RD0 = !RD0;
     }
@@ -2726,10 +2733,16 @@ void main() {
     registers();
     LED_set_off();
     USART_Init();
-    _delay((unsigned long)((1000)*(20000000/4000.0)));
+
+
+
+
+
+    _delay((unsigned long)((2000)*(20000000/4000.0)));
+
     RD3=1;
 
     while(1) {
-# 107 "newmain.c"
+# 98 "newmain.c"
     }
 }

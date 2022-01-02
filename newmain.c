@@ -38,38 +38,23 @@
 
 uint8_t data = 'T';
 uint8_t ferr;
+uint8_t value = 0;
 
-    /*
-        -----  Recommended to not call functions just to read RCREG        -----
-        -----  allow interrupt to do its job                               -----
-    */
-void __interrupt() isr() {
-    /*
-        -----  Not required but left as is incase shit happens             -----
-    
-    GIE = 0;
-    PEIE = 0;
-    RCIE = 0;
-    */
-    
+void __interrupt() isr() {   
     /*
         -----  Recommended by datasheet to read FERR before reading RCREG  -----
         -----  This is probably a very bad way to read FERR                -----
-    */
-    ferr = FERR;    
-    if(OERR) {          // Check for overrun errors 
-        RCSTAbits.CREN = 0;
-        RCSTAbits.CREN = 1;
-    } 
-    data = RCREG;
-    UART_WRITE(data);
-    /*
-        -----  Not required but left as is incase shit happens             -----
-    
-    //GIE = 1;
-    //PEIE = 1;
-    //RCIE = 1;
-    */
+    */ 
+    if(RCIF) {
+        ferr = FERR;    
+        if(OERR) {              // Check for overrun errors 
+            RCSTAbits.CREN = 0;
+            RCSTAbits.CREN = 1;
+        } 
+        //data = RCREG;
+        UART_GET(&data);
+        UART_WRITE(&data);
+    }
     
     if (data == 'A') {
         RD0 = !RD0;
@@ -83,8 +68,14 @@ void main() {
     registers();                // Initiate pinouts
     LED_set_off();
     USART_Init();               // Bluetooth serial uart
-    __delay_ms(1000);
-    RD3=1;
+    /*
+     -----  UART TX/RX slightly wrong without __delay_ms WTF?              -----
+            Slightly related
+        https://www.avrfreaks.net/forum/how-long-wait-uart-or-usart-be-ready
+     */
+    __delay_ms(2000);           
+    
+    RD3=1;      // Ready for operation
     //unsigned char data = 'A';
     while(1) {
         
