@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.32 build 20210201212658 
-                                                                                               Sun Jan 02 18:17:35 2022
+                                                                                               Mon Jan 03 04:03:09 2022
 
 Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1 
      1                           	processor	16F887
@@ -272,7 +272,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    258                           
    259                           	psect	bssCOMMON
    260  0078                     __pbssCOMMON:
-   261  0078                     _mili_second:
+   261  0078                     _ms:
    262  0078                     	ds	2
    263  007A                     _ferr:
    264  007A                     	ds	1
@@ -344,7 +344,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    330 ;;
    331 ;; *************** function _main *****************
    332 ;; Defined at:
-   333 ;;		line 79 in file "newmain.c"
+   333 ;;		line 77 in file "newmain.c"
    334 ;; Parameters:    Size  Location     Type
    335 ;;		None
    336 ;; Auto vars:     Size  Location     Type
@@ -381,26 +381,26 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    367                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
    368                           
    369                           
-   370                           ;newmain.c: 80:     OSCCONbits.SCS = 0;
+   370                           ;newmain.c: 78:     OSCCONbits.SCS = 0;
    371  006D  1683               	bsf	3,5	;RP0=1, select bank1
    372  006E  1303               	bcf	3,6	;RP1=0, select bank1
    373  006F  100F               	bcf	15,0	;volatile
    374                           
-   375                           ;newmain.c: 81:     OSCCONbits.OSTS = 1;
+   375                           ;newmain.c: 79:     OSCCONbits.OSTS = 1;
    376  0070  158F               	bsf	15,3	;volatile
    377  0071                     l730:
    378                           
-   379                           ;newmain.c: 83:     registers();
+   379                           ;newmain.c: 81:     registers();
    380  0071  120A  118A  20D5  120A  118A  	fcall	_registers
    381                           
-   382                           ;newmain.c: 84:     LED_set_off();
+   382                           ;newmain.c: 82:     LED_set_off();
    383  0076  120A  118A  20DC  120A  118A  	fcall	_LED_set_off
    384  007B                     l732:
    385                           
-   386                           ;newmain.c: 85:     USART_Init();
+   386                           ;newmain.c: 83:     USART_Init();
    387  007B  120A  118A  20A2  120A  118A  	fcall	_USART_Init
    388                           
-   389                           ;newmain.c: 91:     _delay((unsigned long)((2000)*(20000000/4000.0)));
+   389                           ;newmain.c: 89:     _delay((unsigned long)((2000)*(20000000/4000.0)));
    390  0080  3033               	movlw	51
    391  0081  00F7               	movwf	??_main+2
    392  0082  30BB               	movlw	187
@@ -416,47 +416,47 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    402  008B  2886               	goto	u77
    403  008C  288D               	nop2
    404                           
-   405                           ;newmain.c: 96:     TMR0 = 100;
+   405                           ;newmain.c: 94:     TMR0 = 100;
    406  008D  3064               	movlw	100
    407  008E  1283               	bcf	3,5	;RP0=0, select bank0
    408  008F  1303               	bcf	3,6	;RP1=0, select bank0
    409  0090  0081               	movwf	1	;volatile
    410  0091                     l734:
    411                           
-   412                           ;newmain.c: 98:     OPTION_REGbits.T0CS = 0;
+   412                           ;newmain.c: 96:     OPTION_REGbits.T0CS = 0;
    413  0091  1683               	bsf	3,5	;RP0=1, select bank1
    414  0092  1303               	bcf	3,6	;RP1=0, select bank1
    415  0093  1281               	bcf	1,5	;volatile
    416  0094                     l736:
    417                           
-   418                           ;newmain.c: 99:     OPTION_REGbits.PSA = 0;
+   418                           ;newmain.c: 97:     OPTION_REGbits.PSA = 0;
    419  0094  1181               	bcf	1,3	;volatile
    420  0095                     l738:
    421                           
-   422                           ;newmain.c: 100:     OPTION_REGbits.PS = 0b100;
+   422                           ;newmain.c: 98:     OPTION_REGbits.PS = 0b100;
    423  0095  0801               	movf	1,w	;volatile
    424  0096  39F8               	andlw	-8
    425  0097  3804               	iorlw	4
    426  0098  0081               	movwf	1	;volatile
    427  0099                     l740:
    428                           
-   429                           ;newmain.c: 101:     INTCONbits.T0IE = 1;
+   429                           ;newmain.c: 99:     INTCONbits.T0IE = 1;
    430  0099  168B               	bsf	11,5	;volatile
    431  009A                     l742:
    432                           
-   433                           ;newmain.c: 102:     INTCONbits.T0IF = 0;
+   433                           ;newmain.c: 100:     INTCONbits.T0IF = 0;
    434  009A  110B               	bcf	11,2	;volatile
    435  009B                     l744:
    436                           
-   437                           ;newmain.c: 104:     RD3=1;
+   437                           ;newmain.c: 102:     RD3=1;
    438  009B  1283               	bcf	3,5	;RP0=0, select bank0
    439  009C  1303               	bcf	3,6	;RP1=0, select bank0
    440  009D  1588               	bsf	8,3	;volatile
    441  009E                     l83:	
-   442                           ;newmain.c: 106:     while(1) {
+   442                           ;newmain.c: 104:     while(1) {
    443                           
    444  009E                     l84:	
-   445                           ;newmain.c: 124:     }
+   445                           ;newmain.c: 122:     }
    446                           
    447  009E  289E               	goto	l83
    448  009F  120A  118A  280E   	ljmp	start
@@ -774,12 +774,12 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    760  0048                     u5_20:
    761  0048                     i1l714:
    762                           
-   763                           ;newmain.c: 65:         if(mili_second == 1000) {
+   763                           ;newmain.c: 65:         if(ms == 1000) {
    764  0048  30E8               	movlw	232
-   765  0049  0678               	xorwf	_mili_second,w
+   765  0049  0678               	xorwf	_ms,w
    766  004A  3003               	movlw	3
    767  004B  1903               	skipnz
-   768  004C  0679               	xorwf	_mili_second+1,w
+   768  004C  0679               	xorwf	_ms+1,w
    769  004D  1D03               	btfss	3,2
    770  004E  2850               	goto	u6_21
    771  004F  2851               	goto	u6_20
@@ -795,9 +795,9 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    781  0054  0688               	xorwf	8,f
    782  0055                     i1l718:
    783                           
-   784                           ;newmain.c: 67:             mili_second = 0;
-   785  0055  01F8               	clrf	_mili_second
-   786  0056  01F9               	clrf	_mili_second+1
+   784                           ;newmain.c: 67:             ms = 0;
+   785  0055  01F8               	clrf	_ms
+   786  0056  01F9               	clrf	_ms+1
    787  0057                     i1l720:
    788                           
    789                           ;newmain.c: 70:         RD1 = !RD1;
@@ -816,13 +816,13 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    802  005D  110B               	bcf	11,2	;volatile
    803  005E                     i1l726:
    804                           
-   805                           ;newmain.c: 73:         mili_second++;
+   805                           ;newmain.c: 73:         ms++;
    806  005E  3001               	movlw	1
-   807  005F  07F8               	addwf	_mili_second,f
+   807  005F  07F8               	addwf	_ms,f
    808  0060  1803               	skipnc
-   809  0061  0AF9               	incf	_mili_second+1,f
+   809  0061  0AF9               	incf	_ms+1,f
    810  0062  3000               	movlw	0
-   811  0063  07F9               	addwf	_mili_second+1,f
+   811  0063  07F9               	addwf	_ms+1,f
    812  0064                     i1l78:
    813  0064  0874               	movf	??_isr+2,w
    814  0065  008A               	movwf	10
@@ -1151,53 +1151,53 @@ EEDATA             100      0       0       0        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.32 build 20210201212658 
-Symbol Table                                                                                   Sun Jan 02 18:17:35 2022
+Symbol Table                                                                                   Mon Jan 03 04:03:09 2022
 
                      l62 00E2                       l47 00BC                       l59 00DB  
                      l83 009E                       l84 009E                       u77 0086  
-                    l730 0071                      l740 0099                      l732 007B  
-                    l742 009A                      l734 0091                      l680 00B4  
-                    l744 009B                      l736 0094                      l728 006D  
-                    l682 00B7                      l738 0095                      l684 00B9  
-                    l686 00BA                      l678 00A2                      l694 00D5  
-                    l696 00DC                      l688 00BB                      _RD0 0040  
-                    _RD1 0041                      _RD2 0042                      _RD3 0043  
-                    _isr 001E                      fsr0 0004                      indf 0000  
-                   ?_isr 0070                     _T0IF 005A                     _FERR 00C2  
-                   i1l50 00C4                     _RCIF 0065                     i1l53 00CA  
-                   i1l56 00D4                     i1l78 0064                     _OERR 00C1  
-                   _TMR0 0001                     u1_20 00CA                     u1_21 00C9  
-                   u2_20 0024                     u2_21 0023                     u3_20 002C  
-                   u3_21 002B                     u4_20 0040                     u4_21 003F  
-                   u5_20 0048                     u5_21 0047                     u6_20 0051  
-                   u6_21 0050                     _data 007B                     _ferr 007A  
-                   _main 006D                     btemp 007E                     start 000E  
-           ?_LED_set_off 0070                    ??_isr 0072                    ?_main 0070  
-                  i1l700 0024                    i1l710 0040                    i1l702 0028  
-                  i1l720 0057                    i1l712 0044                    i1l704 002C  
-                  i1l722 005B                    i1l714 0048                    i1l706 002E  
-                  i1l724 005D                    i1l716 0051                    i1l708 003A  
-                  i1l726 005E                    i1l718 0055                    i1l690 00BE  
-                  i1l692 00CC                    i1l698 001E                    _RCREG 001A  
-            ?_UART_WRITE 0070                    _SPBRG 0099                    _TXREG 0019  
-       __end_of_UART_GET 00D5                    pclath 000A                    status 0003  
-                  wtemp0 007E              ?_USART_Init 0070          __initialization 0011  
-           __end_of_main 00A2                   ??_main 0075                   _SPBRGH 009A  
-    __size_of_UART_WRITE 000E             __pdataCOMMON 007B                   saved_w 007E  
-    __size_of_USART_Init 001B           UART_WRITE@send 0070  __end_of__initialization 001A  
-         __pcstackCOMMON 0070                ?_UART_GET 0070     __size_of_LED_set_off 0007  
-         _OPTION_REGbits 0081               __pmaintext 006D               ??_UART_GET 0070  
-             __pintentry 0004       __size_of_registers 0007             ??_UART_WRITE 0070  
-           ??_USART_Init 0075       __end_of_UART_WRITE 00CB                  __ptext1 00D5  
-                __ptext2 00A2                  __ptext3 00DC                  __ptext4 001E  
-                __ptext5 00BD                  __ptext6 00CB             __size_of_isr 004F  
-     __end_of_USART_Init 00BD     end_of_initialization 001A        __end_of_registers 00DC  
-              _RCSTAbits 0018                _TRISDbits 0088                _TXSTAbits 0098  
-          UART_GET@value 0071        __size_of_UART_GET 000A            __pidataCOMMON 00E3  
-            _BAUDCTLbits 0187      start_initialization 0011              __end_of_isr 006D  
-          ??_LED_set_off 0075              __pbssCOMMON 0078                ___latbits 0002  
-    __end_of_LED_set_off 00E3        interrupt_function 0004                _registers 00D5  
-               _PIE1bits 008C                 _UART_GET 00CB               ?_registers 0070  
-            _LED_set_off 00DC              _mili_second 0078            __size_of_main 0035  
+                     _ms 0078                      l730 0071                      l740 0099  
+                    l732 007B                      l742 009A                      l734 0091  
+                    l680 00B4                      l744 009B                      l736 0094  
+                    l728 006D                      l682 00B7                      l738 0095  
+                    l684 00B9                      l686 00BA                      l678 00A2  
+                    l694 00D5                      l696 00DC                      l688 00BB  
+                    _RD0 0040                      _RD1 0041                      _RD2 0042  
+                    _RD3 0043                      _isr 001E                      fsr0 0004  
+                    indf 0000                     ?_isr 0070                     _T0IF 005A  
+                   _FERR 00C2                     i1l50 00C4                     _RCIF 0065  
+                   i1l53 00CA                     i1l56 00D4                     i1l78 0064  
+                   _OERR 00C1                     _TMR0 0001                     u1_20 00CA  
+                   u1_21 00C9                     u2_20 0024                     u2_21 0023  
+                   u3_20 002C                     u3_21 002B                     u4_20 0040  
+                   u4_21 003F                     u5_20 0048                     u5_21 0047  
+                   u6_20 0051                     u6_21 0050                     _data 007B  
+                   _ferr 007A                     _main 006D                     btemp 007E  
+                   start 000E             ?_LED_set_off 0070                    ??_isr 0072  
+                  ?_main 0070                    i1l700 0024                    i1l710 0040  
+                  i1l702 0028                    i1l720 0057                    i1l712 0044  
+                  i1l704 002C                    i1l722 005B                    i1l714 0048  
+                  i1l706 002E                    i1l724 005D                    i1l716 0051  
+                  i1l708 003A                    i1l726 005E                    i1l718 0055  
+                  i1l690 00BE                    i1l692 00CC                    i1l698 001E  
+                  _RCREG 001A              ?_UART_WRITE 0070                    _SPBRG 0099  
+                  _TXREG 0019         __end_of_UART_GET 00D5                    pclath 000A  
+                  status 0003                    wtemp0 007E              ?_USART_Init 0070  
+        __initialization 0011             __end_of_main 00A2                   ??_main 0075  
+                 _SPBRGH 009A      __size_of_UART_WRITE 000E             __pdataCOMMON 007B  
+                 saved_w 007E      __size_of_USART_Init 001B           UART_WRITE@send 0070  
+__end_of__initialization 001A           __pcstackCOMMON 0070                ?_UART_GET 0070  
+   __size_of_LED_set_off 0007           _OPTION_REGbits 0081               __pmaintext 006D  
+             ??_UART_GET 0070               __pintentry 0004       __size_of_registers 0007  
+           ??_UART_WRITE 0070             ??_USART_Init 0075       __end_of_UART_WRITE 00CB  
+                __ptext1 00D5                  __ptext2 00A2                  __ptext3 00DC  
+                __ptext4 001E                  __ptext5 00BD                  __ptext6 00CB  
+           __size_of_isr 004F       __end_of_USART_Init 00BD     end_of_initialization 001A  
+      __end_of_registers 00DC                _RCSTAbits 0018                _TRISDbits 0088  
+              _TXSTAbits 0098            UART_GET@value 0071        __size_of_UART_GET 000A  
+          __pidataCOMMON 00E3              _BAUDCTLbits 0187      start_initialization 0011  
+            __end_of_isr 006D            ??_LED_set_off 0075              __pbssCOMMON 0078  
+              ___latbits 0002      __end_of_LED_set_off 00E3        interrupt_function 0004  
+              _registers 00D5                 _PIE1bits 008C                 _UART_GET 00CB  
+             ?_registers 0070              _LED_set_off 00DC            __size_of_main 0035  
              _INTCONbits 000B                 intlevel1 0000              ??_registers 0075  
              _OSCCONbits 008F               _UART_WRITE 00BD               _USART_Init 00A2  

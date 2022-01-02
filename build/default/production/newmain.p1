@@ -546,11 +546,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;newmain.c: 40: uint8_t ferr;
 [v _ferr `uc ~T0 @X0 1 e ]
 "41
-[; ;newmain.c: 41: uint16_t mili_second = 0;
-[v _mili_second `ui ~T0 @X0 1 e ]
-[i _mili_second
--> -> 0 `i `ui
-]
+[; ;newmain.c: 41: uint16_t ms;
+[v _ms `ui ~T0 @X0 1 e ]
 [v $root$_isr `(v ~T0 @X0 0 e ]
 "43
 [; ;newmain.c: 43: void __attribute__((picinterrupt(("")))) isr() {
@@ -605,15 +602,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! _T0IF 150  ]
 {
 "65
-[; ;newmain.c: 65:         if(mili_second == 1000) {
-[e $ ! == _mili_second -> -> 1000 `i `ui 151  ]
+[; ;newmain.c: 65:         if(ms == 1000) {
+[e $ ! == _ms -> -> 1000 `i `ui 151  ]
 {
 "66
 [; ;newmain.c: 66:             RD2 = !RD2;
 [e = _RD2 ! _RD2 ]
 "67
-[; ;newmain.c: 67:             mili_second = 0;
-[e = _mili_second -> -> 0 `i `ui ]
+[; ;newmain.c: 67:             ms = 0;
+[e = _ms -> -> 0 `i `ui ]
 "68
 [; ;newmain.c: 68:         }
 }
@@ -628,73 +625,73 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;newmain.c: 72:         INTCONbits.T0IF = 0;
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
 "73
-[; ;newmain.c: 73:         mili_second++;
-[e ++ _mili_second -> -> 1 `i `ui ]
-"76
-[; ;newmain.c: 76:     }
+[; ;newmain.c: 73:         ms++;
+[e ++ _ms -> -> 1 `i `ui ]
+"74
+[; ;newmain.c: 74:     }
 }
 [e :U 150 ]
-"78
-[; ;newmain.c: 78: }
+"76
+[; ;newmain.c: 76: }
 [e :UE 146 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"79
-[; ;newmain.c: 79: void main() {
+"77
+[; ;newmain.c: 77: void main() {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"80
-[; ;newmain.c: 80:     OSCCONbits.SCS = 0;
+"78
+[; ;newmain.c: 78:     OSCCONbits.SCS = 0;
 [e = . . _OSCCONbits 0 0 -> -> 0 `i `uc ]
-"81
-[; ;newmain.c: 81:     OSCCONbits.OSTS = 1;
+"79
+[; ;newmain.c: 79:     OSCCONbits.OSTS = 1;
 [e = . . _OSCCONbits 0 3 -> -> 1 `i `uc ]
-"83
-[; ;newmain.c: 83:     registers();
+"81
+[; ;newmain.c: 81:     registers();
 [e ( _registers ..  ]
-"84
-[; ;newmain.c: 84:     LED_set_off();
+"82
+[; ;newmain.c: 82:     LED_set_off();
 [e ( _LED_set_off ..  ]
-"85
-[; ;newmain.c: 85:     USART_Init();
+"83
+[; ;newmain.c: 83:     USART_Init();
 [e ( _USART_Init ..  ]
-"91
-[; ;newmain.c: 91:     _delay((unsigned long)((2000)*(20000000/4000.0)));
+"89
+[; ;newmain.c: 89:     _delay((unsigned long)((2000)*(20000000/4000.0)));
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"96
-[; ;newmain.c: 96:     TMR0 = 100;
+"94
+[; ;newmain.c: 94:     TMR0 = 100;
 [e = _TMR0 -> -> 100 `i `uc ]
-"98
-[; ;newmain.c: 98:     OPTION_REGbits.T0CS = 0;
+"96
+[; ;newmain.c: 96:     OPTION_REGbits.T0CS = 0;
 [e = . . _OPTION_REGbits 0 3 -> -> 0 `i `uc ]
-"99
-[; ;newmain.c: 99:     OPTION_REGbits.PSA = 0;
+"97
+[; ;newmain.c: 97:     OPTION_REGbits.PSA = 0;
 [e = . . _OPTION_REGbits 0 1 -> -> 0 `i `uc ]
-"100
-[; ;newmain.c: 100:     OPTION_REGbits.PS = 0b100;
+"98
+[; ;newmain.c: 98:     OPTION_REGbits.PS = 0b100;
 [e = . . _OPTION_REGbits 0 0 -> -> 4 `i `uc ]
-"101
-[; ;newmain.c: 101:     INTCONbits.T0IE = 1;
+"99
+[; ;newmain.c: 99:     INTCONbits.T0IE = 1;
 [e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-"102
-[; ;newmain.c: 102:     INTCONbits.T0IF = 0;
+"100
+[; ;newmain.c: 100:     INTCONbits.T0IF = 0;
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"104
-[; ;newmain.c: 104:     RD3=1;
+"102
+[; ;newmain.c: 102:     RD3=1;
 [e = _RD3 -> -> 1 `i `b ]
-"106
-[; ;newmain.c: 106:     while(1) {
+"104
+[; ;newmain.c: 104:     while(1) {
 [e :U 154 ]
 {
-"124
-[; ;newmain.c: 124:     }
+"122
+[; ;newmain.c: 122:     }
 }
 [e :U 153 ]
 [e $U 154  ]
 [e :U 155 ]
-"125
-[; ;newmain.c: 125: }
+"123
+[; ;newmain.c: 123: }
 [e :UE 152 ]
 }

@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.32\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\UART-HC05.X.production.sym \
   --cmf=dist/default/production\UART-HC05.X.production.cmf -z -Q16F887 \
-  -oC:\Users\ron_c\AppData\Local\Temp\xcAs1cnk.4 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\ron_c\AppData\Local\Temp\xcAs18nc.4 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/UART-HC05.X.production.map -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK \
   -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 \
@@ -18,7 +18,7 @@ Linker command line:
   -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 \
   -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE -pcinit=CODE \
-  -pfunctab=ENTRY -k C:\Users\ron_c\AppData\Local\Temp\xcAs1cnk.o \
+  -pfunctab=ENTRY -k C:\Users\ron_c\AppData\Local\Temp\xcAs18nc.o \
   dist/default/production\UART-HC05.X.production.o 
 
 Object code version is 3.11
@@ -28,7 +28,7 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\ron_c\AppData\Local\Temp\xcAs1cnk.o
+C:\Users\ron_c\AppData\Local\Temp\xcAs18nc.o
                 end_init                              E        E        3        8       0
                 reset_vec                             0        0        3        0       0
                 config                             2007     2007        2        0       4
@@ -285,7 +285,7 @@ _data                    dataCOMMON   007B
 _ferr                    bssCOMMON    007A
 _isr                     text4        001E
 _main                    maintext     006D
-_mili_second             bssCOMMON    0078
+_ms                      bssCOMMON    0078
 _registers               text1        00D5
 btemp                    (abs)        007E
 end_of_initialization    cinit        001A

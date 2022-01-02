@@ -1,3 +1,4 @@
+_ms 78 0 COMMON 1
 _RD0 40 0 ABS 0
 _RD1 41 0 ABS 0
 _RD2 42 0 ABS 0
@@ -150,7 +151,6 @@ __LidataCOMMON 0 0 ABS 0
 __pidataCOMMON E3 0 CODE 0
 UART_WRITE@send 70 0 COMMON 1
 __initialization 11 0 CODE 0
-_mili_second 78 0 COMMON 1
 __end_of_USART_Init BD 0 CODE 0
 %segments
 reset_vec 0 5 CODE 0 0
@@ -158,7 +158,7 @@ intentry 8 1C7 CODE 8 0
 cstackCOMMON 70 7B COMMON 70 1
 %locals
 dist/default/production\UART-HC05.X.production.o
-C:\Users\ron_c\AppData\Local\Temp\xcAs1cnk.s
+C:\Users\ron_c\AppData\Local\Temp\xcAs18nc.s
 485 11 0 CODE 0
 488 11 0 CODE 0
 511 11 0 CODE 0
@@ -170,22 +170,22 @@ C:\Users\ron_c\AppData\Local\Temp\xcAs1cnk.s
 526 1A 0 CODE 0
 527 1B 0 CODE 0
 newmain.c
-79 6D 0 CODE 0
-80 6D 0 CODE 0
-81 70 0 CODE 0
-83 71 0 CODE 0
-84 76 0 CODE 0
-85 7B 0 CODE 0
-91 80 0 CODE 0
-96 8D 0 CODE 0
-98 91 0 CODE 0
-99 94 0 CODE 0
-100 95 0 CODE 0
-101 99 0 CODE 0
-102 9A 0 CODE 0
-104 9B 0 CODE 0
-106 9E 0 CODE 0
-124 9E 0 CODE 0
+77 6D 0 CODE 0
+78 6D 0 CODE 0
+79 70 0 CODE 0
+81 71 0 CODE 0
+82 76 0 CODE 0
+83 7B 0 CODE 0
+89 80 0 CODE 0
+94 8D 0 CODE 0
+96 91 0 CODE 0
+97 94 0 CODE 0
+98 95 0 CODE 0
+99 99 0 CODE 0
+100 9A 0 CODE 0
+102 9B 0 CODE 0
+104 9E 0 CODE 0
+122 9E 0 CODE 0
 ./pins.h
 80 D5 0 CODE 0
 81 D5 0 CODE 0
@@ -232,7 +232,7 @@ newmain.c
 72 5D 0 CODE 0
 73 5E 0 CODE 0
 73 60 0 CODE 0
-78 64 0 CODE 0
+76 64 0 CODE 0
 43 4 0 CODE 0
 ./bluetooth.h
 78 BD 0 CODE 0

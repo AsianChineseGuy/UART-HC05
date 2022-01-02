@@ -2703,7 +2703,7 @@ void LED_set_off() {
 
 uint8_t data = 'T';
 uint8_t ferr;
-uint16_t mili_second = 0;
+uint16_t ms;
 
 void __attribute__((picinterrupt(("")))) isr() {
 
@@ -2727,17 +2727,15 @@ void __attribute__((picinterrupt(("")))) isr() {
     }
 
     if(T0IF) {
-        if(mili_second == 1000) {
+        if(ms == 1000) {
             RD2 = !RD2;
-            mili_second = 0;
+            ms = 0;
         }
 
         RD1 = !RD1;
         TMR0 = 100;
         INTCONbits.T0IF = 0;
-        mili_second++;
-
-
+        ms++;
     }
 
 }
@@ -2769,6 +2767,6 @@ void main() {
     RD3=1;
 
     while(1) {
-# 124 "newmain.c"
+# 122 "newmain.c"
     }
 }

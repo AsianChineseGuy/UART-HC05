@@ -38,7 +38,7 @@
 
 uint8_t data = 'T';
 uint8_t ferr;
-uint16_t mili_second = 0;
+uint16_t ms;
 
 void __interrupt() isr() {   
     /*
@@ -62,17 +62,15 @@ void __interrupt() isr() {
     }  
     
     if(T0IF) {
-        if(mili_second == 1000) {
+        if(ms == 1000) {
             RD2 = !RD2;
-            mili_second = 0;
+            ms = 0;
         }
         
         RD1 = !RD1;
         TMR0 = 100;
         INTCONbits.T0IF     = 0;
-        mili_second++;
-        
-        
+        ms++;  
     }
     
 }
