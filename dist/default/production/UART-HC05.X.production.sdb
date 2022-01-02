@@ -21,9 +21,9 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"43 C:\Users\ron_c\MPLABXProjects\UART-HC05.X\newmain.c
+"44 C:\Users\ron_c\MPLABXProjects\UART-HC05.X\newmain.c
 [v _isr isr `II(v  1 e 1 0 ]
-"79
+"86
 [v _main main `(v  1 e 1 0 ]
 "59 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
@@ -70,7 +70,7 @@
 [v _TXREG TXREG `VEuc  1 e 1 @25 ]
 "1140
 [v _RCREG RCREG `VEuc  1 e 1 @26 ]
-[s S241 . 1 `uc 1 PS 1 0 :3:0 
+[s S208 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -78,12 +78,12 @@
 `uc 1 nRBPU 1 0 :1:7 
 ]
 "1366
-[s S248 . 1 `uc 1 PS0 1 0 :1:0 
+[s S215 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 ]
-[u S252 . 1 `S241 1 . 1 0 `S248 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES252  1 e 1 @129 ]
+[u S219 . 1 `S208 1 . 1 0 `S215 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES219  1 e 1 @129 ]
 [s S179 . 1 `uc 1 TRISD0 1 0 :1:0 
 `uc 1 TRISD1 1 0 :1:1 
 `uc 1 TRISD2 1 0 :1:2 
@@ -107,20 +107,20 @@
 "1718
 [u S134 . 1 `S126 1 . 1 0 ]
 [v _PIE1bits PIE1bits `VES134  1 e 1 @140 ]
-[s S209 . 1 `uc 1 SCS 1 0 :1:0 
+[s S235 . 1 `uc 1 SCS 1 0 :1:0 
 `uc 1 LTS 1 0 :1:1 
 `uc 1 HTS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 ]
 "1882
-[s S215 . 1 `uc 1 . 1 0 :4:0 
+[s S241 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 IRCF0 1 0 :1:4 
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S220 . 1 `S209 1 . 1 0 `S215 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES220  1 e 1 @143 ]
+[u S246 . 1 `S235 1 . 1 0 `S241 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES246  1 e 1 @143 ]
 [s S22 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
@@ -177,11 +177,13 @@
 "40
 [v _ferr ferr `uc  1 e 1 0 ]
 "41
-[v _mili_second mili_second `ui  1 e 2 0 ]
-"79
+[v _ms ms `ui  1 e 2 0 ]
+"42
+[v _count count `uc  1 e 1 0 ]
+"86
 [v _main main `(v  1 e 1 0 ]
 {
-"125
+"131
 } 0
 "80 C:\Users\ron_c\MPLABXProjects\UART-HC05.X/pins.h
 [v _registers registers `(v  1 e 1 0 ]
@@ -198,10 +200,10 @@
 {
 "90
 } 0
-"43 C:\Users\ron_c\MPLABXProjects\UART-HC05.X\newmain.c
+"44 C:\Users\ron_c\MPLABXProjects\UART-HC05.X\newmain.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"78
+"85
 } 0
 "78 C:\Users\ron_c\MPLABXProjects\UART-HC05.X/bluetooth.h
 [v _UART_WRITE UART_WRITE `(v  1 e 1 0 ]
